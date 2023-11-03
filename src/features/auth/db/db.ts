@@ -5,7 +5,7 @@ export class UsersDB {
   DB_PATH: string;
 
   constructor() {
-    this.DB_PATH = `./users_db.json`;
+    this.DB_PATH = `./users.db.json`;
   }
 
   getDB = async () => {
