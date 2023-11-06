@@ -12,7 +12,6 @@ export async function createNewUser(req, res, next) {
     };
 
     const user = await createUser(data);
-    console.log(user);
 
     const token = createJWT(user);
     res.json({token});
