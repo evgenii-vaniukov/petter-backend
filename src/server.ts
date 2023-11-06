@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import {signup} from "./features/auth/routes/signup.routes";
-import {authProtect} from "./features/auth/utils/jwt";
+import {authProtect} from "./features/auth/utils/auth";
 
 const app = express();
 

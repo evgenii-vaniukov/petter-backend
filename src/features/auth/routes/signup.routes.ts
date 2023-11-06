@@ -1,7 +1,6 @@
 import {Router} from "express";
+import {createNewUser} from "../handlers/signup.handler";
 
 export const signup = Router();
 
-signup.get("/", (req, res) => {
-  res.send("Hi!");
-});
+signup.post("/", createNewUser);

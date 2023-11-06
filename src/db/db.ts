@@ -1,11 +1,13 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 
-export class UsersDB {
+export class DB {
   DB_PATH: string;
 
-  constructor() {
-    this.DB_PATH = `./users.db.json`;
+  DB_NAME: string;
+
+  constructor(dbName) {
+    this.DB_PATH = `${__dirname}/${dbName}.db.json`;
   }
 
   getDB = async () => {
