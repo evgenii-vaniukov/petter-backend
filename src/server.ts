@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import {signup} from "./features/auth/routes/signup.routes";
+import {authProtect} from "./features/auth/utils/jwt";
 
 const app = express();
 
@@ -16,8 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  console.log(process.env.JWT_SECRET_KEY);
+app.get("/", authProtect, (req, res) => {
   res.json({message: "Hi!"});
 });
 
