@@ -1,5 +1,4 @@
 import cors from "cors";
-import "dotenv/config";
 import express from "express";
 import morgan from "morgan";
 import {signup} from "./features/auth/routes/signup.routes";
@@ -18,6 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
+  console.log(process.env.JWT_SECRET_KEY);
   res.json({message: "Hi!"});
 });
 
