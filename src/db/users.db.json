@@ -3,5 +3,15 @@
     "id": "b5b04407-d710-4f6f-9a45-8d5eae666e49",
     "username": "evgen",
     "password": "$2b$10$K7ncmGRqd7WBJXdf2BY0XeIUD3.HAl.3S18e1Wum1mOdPgZAFFGtS"
+  },
+  {
+    "id": "632bf4e9-754f-48ba-ab22-5d9fcb69a3c0",
+    "username": "evgen1",
+    "password": "$2b$10$/nvtS5qLLH5JxuU0wM7e6eDYbT5ctZqaFNF6pmtffgEcesWGHpkja"
+  },
+  {
+    "id": "b271926e-669a-4fb6-94ab-c0d59f7f7c49",
+    "username": "evgen2",
+    "password": "$2b$10$bWbxhMZg8QUgcYXWrd2mYOKTPUNAi.IBGkiOL8g.aOx3nCXi2icZW"
   }
 ]

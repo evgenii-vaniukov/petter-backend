@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
+import {login} from "./features/auth/routes/login.routes";
 import {signup} from "./features/auth/routes/signup.routes";
 import {authProtect} from "./features/auth/utils/auth";
 
@@ -22,5 +23,6 @@ app.get("/", authProtect, (req, res) => {
 });
 
 app.use("/signup", signup);
+app.use("/login", login);
 
 export default app;
