@@ -4,7 +4,16 @@ import {comparePasswords, createJWT} from "../utils/auth";
 export async function signin(req, res) {
   const user = await findUser(req.body.username);
 
-  const passwordIsValid = comparePasswords(req.body.password, user.password);
+  if (!user) {
+    res.status(401);
+    res.send("User is not found");
+    return;
+  }
+
+  const passwordIsValid = await comparePasswords(
+    req.body.password,
+    user.password
+  );
 
   if (!passwordIsValid) {
     res.status(401);
