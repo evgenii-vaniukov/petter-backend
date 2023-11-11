@@ -1,0 +1,11 @@
+[
+  {
+    "id": "d565b62c-d685-42ea-b4be-64db36756e8a",
+    "email": "evgen@gmail.com",
+    "password": "$2b$10$kf8FUHz7RrBSNsS841NzIegw8hDt34gLJAwOYmeg4yQG22BA/116y",
+    "firstName": "Evgenii",
+    "lastName": "Vaniukov",
+    "phoneNumber": "123",
+    "role": "user"
+  }
+]
