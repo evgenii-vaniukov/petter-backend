@@ -12,6 +12,7 @@ export async function createNewUser(req, res) {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     phoneNumber: req.body.phoneNumber,
+    role: "user",
   };
 
   const user = await createUser(data);

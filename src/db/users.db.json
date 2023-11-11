@@ -1,10 +1,20 @@
 [
   {
-    "id": "1633f227-e4c0-41eb-8dc9-1202df384b70",
-    "email": "evgen",
-    "password": "$2b$10$ZG6wueK0pGYo/lQNFKg0mOSYwyvWDq1OCTg6gnlApzENTpNEjvxqq",
+    "id": "a170597e-94fb-4041-9338-c0d381b8a970",
+    "email": "evgen@mail.ru",
+    "password": "$2b$10$AGJL0iOhNTSFIOceq02YqeSBtLdAq0joVjYyf1.IbmIm6M4XqVWJK",
     "firstName": "Evgenii",
     "lastName": "Vaniukov",
-    "phoneNumber": "123"
+    "phoneNumber": "123",
+    "role": "user"
+  },
+  {
+    "id": "20a03122-3075-4bfe-9567-29065022dcb0",
+    "email": "evgen1@mail.ru",
+    "password": "$2b$10$GFtiVazq4goP.Fs2dcddWekJi4vLfTCCEbKx2kO4qUM2fCOHlJ0J2",
+    "firstName": "Evgenii",
+    "lastName": "Vaniukov",
+    "phoneNumber": "123",
+    "role": "user"
   }
 ]
