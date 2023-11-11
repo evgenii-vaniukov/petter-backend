@@ -3,7 +3,7 @@ import express from "express";
 import morgan from "morgan";
 import {login} from "./features/auth/routes/login.routes";
 import {signup} from "./features/auth/routes/signup.routes";
-import {authProtect} from "./features/auth/utils/auth";
+import {authProtect} from "./utils/authProtect";
 
 const app = express();
 

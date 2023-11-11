@@ -1,5 +1,5 @@
 import {findUser} from "../services/auth.service";
-import {createJWT} from "../utils/auth";
+import {createJWT} from "../utils/jwt";
 import {comparePasswords} from "../utils/passwords";
 
 export async function signin(req, res) {
