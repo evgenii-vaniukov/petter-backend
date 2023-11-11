@@ -14,12 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
+// Test middleware
 app.use((req, res, next) => {
   next();
 });
-
-app.get("/", authProtect, (req, res) => {
+app.get("/", (req, res) => {
   res.json({message: "Hi!"});
+});
+
+app.get("/protected", authProtect, (req, res) => {
+  res.json({message: "Protected!"});
 });
 
 app.use("/signup", signup);

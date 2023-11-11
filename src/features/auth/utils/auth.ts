@@ -1,11 +1,7 @@
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export function createJWT(user) {
-  const token = jwt.sign(
-    {id: user.id, username: user.username},
-    process.env.JWT_SECRET_KEY
-  );
+  const token = jwt.sign({id: user.id}, process.env.JWT_SECRET_KEY);
   return token;
 }
 
@@ -35,12 +31,4 @@ export function authProtect(req, res, next) {
     res.send("Token is not valid");
     return;
   }
-}
-
-export function comparePasswords(password, hashedPassword) {
-  return bcrypt.compare(password, hashedPassword);
-}
-
-export function hashPassword(password) {
-  return bcrypt.hash(password, +process.env.SALT_ROUNDS);
 }

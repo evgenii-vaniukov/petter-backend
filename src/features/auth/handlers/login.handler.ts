@@ -1,5 +1,6 @@
 import {findUser} from "../services/auth.service";
-import {comparePasswords, createJWT} from "../utils/auth";
+import {createJWT} from "../utils/auth";
+import {comparePasswords} from "../utils/passwords";
 
 export async function signin(req, res) {
   const user = await findUser(req.body.username);
@@ -21,5 +22,5 @@ export async function signin(req, res) {
     return;
   }
   const token = createJWT(user);
-  res.json(token);
+  res.json({token});
 }

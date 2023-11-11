@@ -1,21 +1,20 @@
 import crypto from "crypto";
 import {createUser} from "../services/auth.service";
-import {createJWT, hashPassword} from "../utils/auth";
+import {createJWT} from "../utils/auth";
+import {hashPassword} from "../utils/passwords";
 
-export async function createNewUser(req, res, next) {
-  try {
-    const hashedPassword = await hashPassword(req.body.password);
-    const data = {
-      id: crypto.randomUUID(),
-      username: req.body.username,
-      password: hashedPassword,
-    };
+export async function createNewUser(req, res) {
+  const hashedPassword = await hashPassword(req.body.password);
+  const data = {
+    id: crypto.randomUUID(),
+    email: req.body.email,
+    password: hashedPassword,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+  };
 
-    const user = await createUser(data);
+  const user = await createUser(data);
 
-    const token = createJWT(user);
-    res.json({token});
-  } catch (e) {
-    next(500);
-  }
+  const token = createJWT(user);
+  res.json({token});
 }
