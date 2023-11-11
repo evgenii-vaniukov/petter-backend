@@ -2,7 +2,7 @@ import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
 const ajv = new Ajv();
-addFormats(ajv, ["email"]);
+addFormats(ajv);
 
 export function validateSchema(schema) {
   return (req, res, next) => {
@@ -14,7 +14,7 @@ export function validateSchema(schema) {
 
     if (!isValid) {
       res.status(400);
-      res.json({message: "Invalid data entered by user"});
+      res.json({message: "Invalid input"});
       return;
     } else {
       next();

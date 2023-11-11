@@ -1,4 +1,4 @@
-export const schema = {
+export const signupSchema = {
   type: "object",
   properties: {
     email: {type: "string", format: "email"},
