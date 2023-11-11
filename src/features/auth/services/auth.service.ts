@@ -7,8 +7,8 @@ export async function createUser(user) {
   return data;
 }
 
-export async function findUser(username) {
+export async function findUser(email) {
   const db = await usersDB.getDB();
-  const user = db.find((user) => user["username"] == username);
+  const user = db.find((user) => user["email"] == email);
   return user;
 }

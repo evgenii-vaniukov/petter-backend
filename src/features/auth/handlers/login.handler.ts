@@ -3,7 +3,7 @@ import {createJWT} from "../utils/auth";
 import {comparePasswords} from "../utils/passwords";
 
 export async function signin(req, res) {
-  const user = await findUser(req.body.username);
+  const user = await findUser(req.body.email);
 
   if (!user) {
     res.status(401);

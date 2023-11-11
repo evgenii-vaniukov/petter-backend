@@ -11,6 +11,7 @@ export async function createNewUser(req, res) {
     password: hashedPassword,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    phoneNumber: req.body.phoneNumber,
   };
 
   const user = await createUser(data);

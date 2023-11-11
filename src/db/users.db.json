@@ -1,9 +1,10 @@
 [
   {
-    "id": "eeee6a1c-02b6-4918-8544-a28bca4d1f89",
+    "id": "1633f227-e4c0-41eb-8dc9-1202df384b70",
     "email": "evgen",
-    "password": "$2b$10$pLftShJvGw9ZzgBTdnmYi.9MWWEn9j/deo85zDYWbBbMGlqkrCNZq",
+    "password": "$2b$10$ZG6wueK0pGYo/lQNFKg0mOSYwyvWDq1OCTg6gnlApzENTpNEjvxqq",
     "firstName": "Evgenii",
-    "lastName": "Vaniukov"
+    "lastName": "Vaniukov",
+    "phoneNumber": "123"
   }
 ]
