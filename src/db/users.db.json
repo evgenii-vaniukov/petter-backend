@@ -1,17 +1,17 @@
 [
   {
-    "id": "a170597e-94fb-4041-9338-c0d381b8a970",
-    "email": "evgen@mail.ru",
-    "password": "$2b$10$AGJL0iOhNTSFIOceq02YqeSBtLdAq0joVjYyf1.IbmIm6M4XqVWJK",
+    "id": "51485c46-41dd-4c2e-8abc-e630c4e7de55",
+    "email": "evgen3@gmail.com",
+    "password": "$2b$10$cd.lDuDjzn03eklO96XQauWqpQ/V6SynccJlm5Hvkz9WjeUPriSVC",
     "firstName": "Evgenii",
     "lastName": "Vaniukov",
     "phoneNumber": "123",
     "role": "user"
   },
   {
-    "id": "20a03122-3075-4bfe-9567-29065022dcb0",
-    "email": "evgen1@mail.ru",
-    "password": "$2b$10$GFtiVazq4goP.Fs2dcddWekJi4vLfTCCEbKx2kO4qUM2fCOHlJ0J2",
+    "id": "b299b154-1f3d-4621-8161-3114559673f7",
+    "email": "evgen4@gmail.com",
+    "password": "$2b$10$gMNGVSpTBgs2xOePcgaOLer1oogN1ZxTEqqcHgtE1NK/NL5rAUvxi",
     "firstName": "Evgenii",
     "lastName": "Vaniukov",
     "phoneNumber": "123",
