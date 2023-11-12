@@ -1,5 +1,10 @@
 import crypto from "crypto";
-import {createPet} from "../services/pet.services";
+import {createPet, getPets} from "../services/pet.services";
+
+export async function getAllPets(req, res) {
+  const pets = await getPets();
+  res.json(pets);
+}
 
 export async function addNewPet(req, res) {
   const data = {
