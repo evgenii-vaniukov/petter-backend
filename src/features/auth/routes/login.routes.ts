@@ -5,4 +5,4 @@ import {loginSchema} from "../schemas/loginSchema";
 
 export const login = Router();
 
-login.get("/", [validateSchema(loginSchema)], signin);
+login.post("/", [validateSchema(loginSchema)], signin);

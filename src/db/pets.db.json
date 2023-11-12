@@ -12,5 +12,33 @@
     "hypoallergenic": "true",
     "dietaryRestrictions": "none",
     "breed": "York"
+  },
+  {
+    "id": "091a1d8f-34a6-496d-a372-5cbdf154bcdc",
+    "type": "dog",
+    "name": "Jessey",
+    "adoptionStatus": "true",
+    "picturePath": "",
+    "height": "1",
+    "weight": "2",
+    "color": "brown",
+    "bio": "Happy dog",
+    "hypoallergenic": "true",
+    "dietaryRestrictions": "none",
+    "breed": "York"
+  },
+  {
+    "id": "7372aa1d-b7b7-4693-96f9-fa73b5de1456",
+    "type": "dog",
+    "name": "Jessey",
+    "adoptionStatus": "true",
+    "picturePath": "",
+    "height": "1",
+    "weight": "2",
+    "color": "brown",
+    "bio": "Happy dog",
+    "hypoallergenic": "true",
+    "dietaryRestrictions": "none",
+    "breed": "York"
   }
 ]
