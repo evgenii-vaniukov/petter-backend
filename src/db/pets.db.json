@@ -1,0 +1,16 @@
+[
+  {
+    "id": "76e770fd-783c-4ce1-86b9-a694cd9bcb93",
+    "type": "dog",
+    "name": "Jessey",
+    "adoptionStatus": "true",
+    "picturePath": "",
+    "height": "1",
+    "weight": "2",
+    "color": "brown",
+    "bio": "Happy dog",
+    "hypoallergenic": "true",
+    "dietaryRestrictions": "none",
+    "breed": "York"
+  }
+]
