@@ -1,4 +1,4 @@
-import {findUser} from "../services/auth.service";
+import {findUser} from "../services/auth.services";
 import {createJWT} from "../utils/jwt";
 import {comparePasswords} from "../utils/passwords";
 

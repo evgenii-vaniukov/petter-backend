@@ -1,4 +1,4 @@
-import {findUser} from "../services/auth.service";
+import {findUser} from "../services/auth.services";
 
 export async function emailIsUnique(req, res, next) {
   const user = await findUser(req.body.email);

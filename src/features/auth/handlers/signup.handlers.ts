@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import {createUser} from "../services/auth.service";
+import {createUser} from "../services/auth.services";
 import {createJWT} from "../utils/jwt";
 import {hashPassword} from "../utils/passwords";
 
