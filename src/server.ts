@@ -29,6 +29,6 @@ app.get("/protected", authProtect, (req, res) => {
 
 app.use("/signup", signup);
 app.use("/login", login);
-app.use("/pet", pet);
+app.use("/pets", pet);
 
 export default app;

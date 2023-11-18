@@ -1,12 +1,13 @@
 import {Router} from "express";
 import {adminProtect} from "../../../utils/adminProtect";
 import {validateSchema} from "../../../utils/schemaValidation";
-import {addPet, getAllPets, getPetByID} from "../handlers/pet.handlers";
-import {petSchema} from "../schemas/petSchema";
+import {addPet, editPet, getPetByID, getPets} from "../handlers/pet.handlers";
+import {patchPetSchema, postPetSchema} from "../schemas/petSchemas";
 export const pet = Router();
 
-pet.get("/", getAllPets);
-
+pet.get("/", getPets);
 pet.get("/:id", getPetByID);
 
-pet.post("/", [validateSchema(petSchema), adminProtect], addPet);
+pet.patch("/:id", [validateSchema(patchPetSchema), adminProtect], editPet);
+
+pet.post("/", [validateSchema(postPetSchema), adminProtect], addPet);

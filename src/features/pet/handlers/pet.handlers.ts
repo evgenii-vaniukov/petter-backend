@@ -1,8 +1,15 @@
 import crypto from "crypto";
-import {createRecord, getData, getRecordByID} from "../services/pet.services";
-export async function getAllPets(req, res) {
-  const pets = await getData();
-  res.json(pets);
+import {
+  createRecord,
+  editRecordByID,
+  getData,
+  getRecordByID,
+} from "../services/pet.services";
+
+export async function getPets(req, res) {
+  const searchParameters = req.query;
+  const filteredData = await getData(searchParameters);
+  res.json(filteredData);
 }
 
 export async function addPet(req, res) {
@@ -26,7 +33,14 @@ export async function addPet(req, res) {
 }
 
 export async function getPetByID(req, res) {
-  const {id} = req.params;
+  const id = req.params.id;
   const pet = await getRecordByID(id);
   res.json({pet});
+}
+
+export async function editPet(req, res) {
+  const id = req.params.id;
+  const updatedPetDetails = req.body;
+  const updatedPet = await editRecordByID(id, updatedPetDetails);
+  res.json(updatedPet);
 }
