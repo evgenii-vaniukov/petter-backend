@@ -44,3 +44,7 @@ export async function editPet(req, res) {
   const updatedPet = await editRecordByID(id, updatedPetDetails);
   res.json(updatedPet);
 }
+
+export async function adoptPet(req, res) {
+  res.send("TODO");
+}
