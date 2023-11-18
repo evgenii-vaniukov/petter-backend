@@ -46,3 +46,19 @@ export const patchPetSchema = {
   },
   additionalProperties: false,
 };
+
+export const searchPetSchema = {
+  type: "object",
+  properties: {
+    type: {type: "string"},
+    name: {type: "string"},
+    adoptionStatus: {type: "string"},
+    height: {type: "string"},
+    weight: {type: "string"},
+    color: {type: "string"},
+    hypoallergenic: {type: "string"},
+    dietaryRestrictions: {type: "string"},
+    breed: {type: "string"},
+  },
+  additionalProperties: false,
+};
