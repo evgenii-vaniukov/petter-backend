@@ -3,7 +3,8 @@ import express from "express";
 import morgan from "morgan";
 import {login} from "./features/auth/routes/login.routes";
 import {signup} from "./features/auth/routes/signup.routes";
-import {authProtect} from "./features/auth/utils/auth";
+import {pet} from "./features/pet/routes/pet.routes";
+import {authProtect} from "./utils/authProtect";
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.get("/protected", authProtect, (req, res) => {
 
 app.use("/signup", signup);
 app.use("/login", login);
+app.use("/pets", pet);
 
 export default app;

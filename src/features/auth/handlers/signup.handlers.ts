@@ -1,6 +1,6 @@
 import crypto from "crypto";
-import {createUser} from "../services/auth.service";
-import {createJWT} from "../utils/auth";
+import {createUser} from "../services/auth.services";
+import {createJWT} from "../utils/jwt";
 import {hashPassword} from "../utils/passwords";
 
 export async function createNewUser(req, res) {

@@ -6,6 +6,15 @@
     "firstName": "Evgenii",
     "lastName": "Vaniukov",
     "phoneNumber": "123",
+    "role": "admin"
+  },
+  {
+    "id": "b8f9290d-c41e-43d4-8173-b701565e69d4",
+    "email": "evgen1@gmail.com",
+    "password": "$2b$10$pvaiAqFkL42oxjV7xvrQFOSEBG3cE23CSBh9RAz626inX/6w0GYFe",
+    "firstName": "Evgenii",
+    "lastName": "Vaniukov",
+    "phoneNumber": "123",
     "role": "user"
   }
 ]
