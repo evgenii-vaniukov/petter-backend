@@ -1,12 +1,11 @@
 import crypto from "crypto";
-import {createPet, getPets} from "../services/pet.services";
-
+import {createRecord, getData, getRecordByID} from "../services/pet.services";
 export async function getAllPets(req, res) {
-  const pets = await getPets();
+  const pets = await getData();
   res.json(pets);
 }
 
-export async function addNewPet(req, res) {
+export async function addPet(req, res) {
   const data = {
     id: crypto.randomUUID(),
     type: req.body.type,
@@ -22,6 +21,12 @@ export async function addNewPet(req, res) {
     breed: req.body.breed,
   };
 
-  const pet = await createPet(data);
+  const pet = await createRecord(data);
   res.json(pet);
+}
+
+export async function getPetByID(req, res) {
+  const {id} = req.params;
+  const pet = await getRecordByID(id);
+  res.json({pet});
 }
