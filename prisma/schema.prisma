@@ -18,21 +18,21 @@ enum Role {
 
 model User {
   id          String     @id @default(uuid())
+  adoptedPets Pet[]
+  savedPets   SavedPet[]
   email       String     @unique
   password    String
   firstName   String
   lastName    String
   phoneNumber String     @unique
   role        Role       @default(USER)
-  adoptedPets Pet[]
-  savedPets   SavedPet[]
 
   @@index([id])
   @@index([email])
 }
 
 /// Pet models
-enum petType {
+enum PetType {
   CAT
   DOG
   FISH
@@ -40,14 +40,18 @@ enum petType {
   OTHER
 }
 
-enum dietaryRestrictions {
+enum DietaryRestrictions {
   NONE
   HYPOALERGENIC
 }
 
 model Pet {
   id                  String              @id @default(uuid())
-  type                petType
+  name                String
+  user                User?               @relation(fields: [userId], references: [id])
+  userId              String?
+  savedBy             SavedPet[]
+  type                PetType
   adoptionStatus      Boolean             @default(false)
   picturePath         String
   height              Int
@@ -55,12 +59,8 @@ model Pet {
   color               String
   bio                 String
   hypoallergenic      Boolean
-  dietaryRestrictions dietaryRestrictions
+  dietaryRestrictions DietaryRestrictions
   breed               String
-  name                String
-  userId              String?
-  user                User?               @relation(fields: [userId], references: [id])
-  savedBy             SavedPet[]
 
   @@index([id])
 }

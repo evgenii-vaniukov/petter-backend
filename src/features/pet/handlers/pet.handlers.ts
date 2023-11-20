@@ -5,6 +5,11 @@ import {
   getData,
   getRecordByID,
 } from "../services/pet.services";
+import {
+  convertToBoolean,
+  convertToDieataryRestrictions,
+  convertToPetType,
+} from "../utils/typeConverters";
 
 export async function getPets(req, res) {
   const searchParameters = req.query;
@@ -13,23 +18,27 @@ export async function getPets(req, res) {
 }
 
 export async function addPet(req, res) {
+  // TODO: Check that input is non empty
   const data = {
     id: crypto.randomUUID(),
-    type: req.body.type,
-    name: req.body.name,
-    adoptionStatus: req.body.adoptionStatus, // Convert to boolean
-    picturePath: req.body.picturePath,
-    height: req.body.height,
-    weight: req.body.weight,
-    color: req.body.color,
+    type: convertToPetType(req.body.type), // Check that type is valid
+    name: req.body.name.toLowerCase(),
+    adoptionStatus: convertToBoolean(req.body.adoptionStatus), // Convert to boolean
+    picturePath: req.body.picturePath, // Check if URL
+    height: +req.body.height,
+    weight: +req.body.weight,
+    color: req.body.color.toLowerCase(),
     bio: req.body.bio,
-    hypoallergenic: req.body.hypoallergenic,
-    dietaryRestrictions: req.body.dietaryRestrictions,
-    breed: req.body.breed,
+    hypoallergenic: convertToBoolean(req.body.hypoallergenic),
+    dietaryRestrictions: convertToDieataryRestrictions(
+      // Check that type is valid
+      req.body.dietaryRestrictions
+    ),
+    breed: req.body.breed.toLowerCase(),
   };
 
   const pet = await createRecord(data);
-  res.json(pet);
+  res.send("Successfully Added");
 }
 
 export async function getPetByID(req, res) {
