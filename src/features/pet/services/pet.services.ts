@@ -67,3 +67,54 @@ export async function addRecordToUser(userID, recordID) {
   });
   return updatedUser;
 }
+
+export async function removeRecordFromUser(userID, recordID) {
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userID,
+    },
+    data: {
+      adoptedPets: {
+        disconnect: {
+          id: recordID,
+        },
+      },
+    },
+  });
+  return updatedUser;
+}
+
+export async function saveRecordtoUser(userID, recordID) {
+  const savePet = await prisma.user.update({
+    where: {
+      id: userID,
+    },
+    data: {
+      savedPets: {
+        create: {
+          petId: recordID,
+        },
+      },
+    },
+  });
+  return savePet;
+}
+
+export async function removeRecordFromSaved(userID, recordID) {
+  const savePet = await prisma.user.update({
+    where: {
+      id: userID,
+    },
+    data: {
+      savedPets: {
+        delete: {
+          userId_petId: {
+            userId: userID,
+            petId: recordID,
+          },
+        },
+      },
+    },
+  });
+  return savePet;
+}

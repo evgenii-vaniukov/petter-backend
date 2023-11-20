@@ -5,6 +5,9 @@ import {
   editRecordByID,
   getData,
   getRecordByID,
+  removeRecordFromSaved,
+  removeRecordFromUser,
+  saveRecordtoUser,
 } from "../services/pet.services";
 import {formatPetData} from "../utils/inputFormater";
 
@@ -53,7 +56,7 @@ export async function editPet(req, res) {
 
 export async function adoptPet(req, res) {
   const petID = req.params.id;
-  const pet = await getRecordByID(petID);
+
   const updatedPetDetails = formatPetData({
     adoptionStatus: "true",
   });
@@ -61,7 +64,34 @@ export async function adoptPet(req, res) {
   const updatedPet = await editRecordByID(petID, updatedPetDetails);
 
   const userID = req.user.id;
-  await addRecordToUser(userID, petID);
-
+  const updatedUser = await addRecordToUser(userID, petID);
   res.send("Sucessfully Adopted");
+}
+
+export async function returnPet(req, res) {
+  const petID = req.params.id;
+  const updatedPetDetails = formatPetData({
+    adoptionStatus: "false",
+  });
+
+  const updatedPet = await editRecordByID(petID, updatedPetDetails);
+
+  const userID = req.user.id;
+  const updatedUser = await removeRecordFromUser(userID, petID);
+
+  res.send("Sucessfully Returned");
+}
+
+export async function savePet(req, res) {
+  const petID = req.params.id;
+  const userID = req.user.id;
+  const updatedUser = await saveRecordtoUser(userID, petID);
+  res.send("Sucessfully Saved");
+}
+
+export async function unsavePet(req, res) {
+  const petID = req.params.id;
+  const userID = req.user.id;
+  const updatedUser = await removeRecordFromSaved(userID, petID);
+  res.send("Sucessfully Unsaved");
 }
