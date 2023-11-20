@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {adminProtect} from "../../../utils/adminProtect";
+import {adminProtect, authProtect} from "../../../utils/protectRoutes";
 import {validateSchema} from "../../../utils/schemaValidation";
 import {
   addPet,
@@ -22,4 +22,4 @@ pet.patch("/:id", [validateSchema(patchPetSchema), adminProtect], editPet);
 
 pet.post("/", [validateSchema(postPetSchema), adminProtect], addPet);
 
-pet.post("/:id/adopt", adoptPet);
+pet.post("/:id/adopt", authProtect, adoptPet);

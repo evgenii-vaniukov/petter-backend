@@ -30,7 +30,7 @@ export async function getRecordByID(id) {
     return null;
   }
 
-  return fileterdData;
+  return fileterdData[0];
 }
 
 export async function editRecordByID(id, updatedRecord) {
@@ -41,4 +41,29 @@ export async function editRecordByID(id, updatedRecord) {
     data: updatedRecord,
   });
   return updatedPet;
+}
+
+export async function deleteRecordByID(id) {
+  const deletedPet = await prisma.pet.delete({
+    where: {
+      id: id,
+    },
+  });
+  return deletedPet;
+}
+
+export async function addRecordToUser(userID, recordID) {
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userID,
+    },
+    data: {
+      adoptedPets: {
+        connect: {
+          id: recordID,
+        },
+      },
+    },
+  });
+  return updatedUser;
 }
