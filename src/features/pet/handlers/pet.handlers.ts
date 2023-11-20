@@ -40,7 +40,7 @@ export async function addPet(req, res) {
   const pet = await createRecord(data);
   res.send("Successfully Added");
 }
-
+// test
 export async function getPetByID(req, res) {
   const id = req.params.id;
   const pet = await getRecordByID(id);
