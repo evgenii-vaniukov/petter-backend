@@ -13,6 +13,37 @@ import {
 
 export async function getPets(req, res) {
   const searchParameters = req.query;
+
+  for (let key in searchParameters) {
+    if (key === "hypoallergenic") {
+      searchParameters[key] = convertToBoolean(searchParameters[key]);
+    } else if (key === "dietaryRestrictions") {
+      searchParameters[key] = convertToDieataryRestrictions(
+        searchParameters[key]
+      );
+    } else if (key === "type") {
+      searchParameters[key] = convertToPetType(searchParameters[key]);
+    } else if (key === "adoptionStatus") {
+      searchParameters[key] = convertToBoolean(searchParameters[key]);
+    } else if (key === "name") {
+      searchParameters[key] = searchParameters[key].toLowerCase();
+    } else if (key === "color") {
+      searchParameters[key] = searchParameters[key].toLowerCase();
+    } else if (key === "breed") {
+      searchParameters[key] = searchParameters[key].toLowerCase();
+    } else if (key === "height") {
+      searchParameters[key] = +searchParameters[key];
+    } else if (key === "weight") {
+      searchParameters[key] = +searchParameters[key];
+    } else if (key === "bio") {
+      searchParameters[key] = searchParameters[key].toLowerCase();
+    } else if (key === "picturePath") {
+      searchParameters[key] = searchParameters[key].toLowerCase();
+    } else {
+      delete searchParameters[key];
+    }
+  }
+
   const filteredData = await getData(searchParameters);
   res.json(filteredData);
 }
@@ -28,7 +59,7 @@ export async function addPet(req, res) {
     height: +req.body.height,
     weight: +req.body.weight,
     color: req.body.color.toLowerCase(),
-    bio: req.body.bio,
+    bio: req.body.bio.toLowerCase(),
     hypoallergenic: convertToBoolean(req.body.hypoallergenic),
     dietaryRestrictions: convertToDieataryRestrictions(
       // Check that type is valid
