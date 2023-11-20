@@ -25,8 +25,6 @@ export async function getPets(req, res) {
       searchParameters[key] = convertToPetType(searchParameters[key]);
     } else if (key === "adoptionStatus") {
       searchParameters[key] = convertToBoolean(searchParameters[key]);
-    } else if (key === "name") {
-      searchParameters[key] = searchParameters[key].toLowerCase();
     } else if (key === "color") {
       searchParameters[key] = searchParameters[key].toLowerCase();
     } else if (key === "breed") {
@@ -35,10 +33,6 @@ export async function getPets(req, res) {
       searchParameters[key] = +searchParameters[key];
     } else if (key === "weight") {
       searchParameters[key] = +searchParameters[key];
-    } else if (key === "bio") {
-      searchParameters[key] = searchParameters[key].toLowerCase();
-    } else if (key === "picturePath") {
-      searchParameters[key] = searchParameters[key].toLowerCase();
     } else {
       delete searchParameters[key];
     }
@@ -53,13 +47,13 @@ export async function addPet(req, res) {
   const data = {
     id: crypto.randomUUID(),
     type: convertToPetType(req.body.type), // Check that type is valid
-    name: req.body.name.toLowerCase(),
+    name: req.body.name,
     adoptionStatus: convertToBoolean(req.body.adoptionStatus), // Convert to boolean
     picturePath: req.body.picturePath, // Check if URL
     height: +req.body.height,
     weight: +req.body.weight,
     color: req.body.color.toLowerCase(),
-    bio: req.body.bio.toLowerCase(),
+    bio: req.body.bio,
     hypoallergenic: convertToBoolean(req.body.hypoallergenic),
     dietaryRestrictions: convertToDieataryRestrictions(
       // Check that type is valid
