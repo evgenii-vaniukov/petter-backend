@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// User models
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id          String     @id @default(uuid())
+  adoptedPets Pet[]
+  savedPets   SavedPet[]
+  email       String     @unique
+  password    String
+  firstName   String
+  lastName    String
+  phoneNumber String     @unique
+  role        Role       @default(USER)
+
+  @@index([id])
+  @@index([email])
+}
+
+/// Pet models
+enum PetType {
+  CAT
+  DOG
+  FISH
+  BIRD
+  OTHER
+}
+
+enum DietaryRestrictions {
+  NONE
+  HYPOALERGENIC
+}
+
+model Pet {
+  id                  String              @id @default(uuid())
+  name                String
+  user                User?               @relation(fields: [userId], references: [id])
+  userId              String?
+  savedBy             SavedPet[]
+  type                PetType
+  adoptionStatus      Boolean             @default(false)
+  picturePath         String
+  height              Int
+  weight              Int
+  color               String
+  bio                 String
+  hypoallergenic      Boolean
+  dietaryRestrictions DietaryRestrictions
+  breed               String
+
+  @@index([id])
+}
+
+model SavedPet {
+  user    User     @relation(fields: [userId], references: [id])
+  userId  String // relation scalar field
+  pet     Pet      @relation(fields: [petId], references: [id])
+  petId   String // relation scalar field
+  savedAt DateTime @default(now())
+
+  @@id([userId, petId])
+}

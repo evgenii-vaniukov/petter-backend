@@ -1,14 +1,17 @@
-import {DB} from "../../../db/db";
-
-const usersDB = new DB("users");
+import {prisma} from "../../../db";
 
 export async function createUser(user) {
-  const data = await usersDB.insertDB(user);
+  const data = await prisma.user.create({
+    data: user,
+  });
   return data;
 }
 
 export async function findUser(email) {
-  const db = await usersDB.getDB();
-  const user = db.find((user) => user["email"] == email);
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
   return user;
 }
