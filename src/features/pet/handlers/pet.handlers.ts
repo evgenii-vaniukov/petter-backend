@@ -14,6 +14,14 @@ import {formatPetData} from "../utils/inputFormater";
 export async function getPets(req, res) {
   const searchParameters = formatPetData(req.query);
 
+  for (const key in searchParameters) {
+    if (Array.isArray(searchParameters[key])) {
+      searchParameters[key] = {
+        in: searchParameters[key],
+      };
+    }
+  }
+
   const filteredData = await getData(searchParameters);
   res.json(filteredData);
 }
@@ -35,7 +43,6 @@ export async function addPet(req, res) {
     breed: req.body.breed,
   };
   const formatedData = formatPetData(data);
-  console.log(formatedData);
 
   const pet = await createRecord(formatedData);
   res.send("Successfully Added");

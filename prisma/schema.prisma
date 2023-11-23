@@ -21,7 +21,7 @@ model User {
   password    String
   firstName   String
   lastName    String
-  phoneNumber String     @unique
+  phoneNumber String
   role        Role       @default(USER)
 
   @@index([id])
