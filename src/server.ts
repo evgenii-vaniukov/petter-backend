@@ -4,6 +4,7 @@ import morgan from "morgan";
 import {login} from "./features/auth/routes/login.routes";
 import {signup} from "./features/auth/routes/signup.routes";
 import {pet} from "./features/pets/routes/pet.routes";
+import {user} from "./features/user/routes/user.routes";
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.get("/", (req, res) => {
 app.use("/signup", signup);
 app.use("/login", login);
 app.use("/pets", pet);
+app.use("/user", user);
 
 export default app;
