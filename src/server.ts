@@ -3,7 +3,7 @@ import express from "express";
 import morgan from "morgan";
 import {login} from "./features/auth/routes/login.routes";
 import {signup} from "./features/auth/routes/signup.routes";
-import {pet} from "./features/pet/routes/pet.routes";
+import {pet} from "./features/pets/routes/pet.routes";
 
 const app = express();
 
