@@ -20,7 +20,7 @@ export function adminProtect(req, res, next) {
     const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
     req.user = user;
     next();
-    if (user.role != "admin") {
+    if (user.role != "ADMIN") {
       res.status(401);
       res.send("Not Authorized");
       return;

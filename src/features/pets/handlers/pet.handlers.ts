@@ -25,26 +25,31 @@ export async function getPets(req, res) {
   const filteredData = await getData(searchParameters);
   res.json(filteredData);
 }
-
+/// !!!!!! put everything inside try catch
 export async function addPet(req, res) {
   // TODO: Check that inputs are non empty
-  const data = {
-    id: crypto.randomUUID(),
-    type: req.body.type, // Check that type is valid
-    name: req.body.name,
-    adoptionStatus: req.body.adoptionStatus, // Convert to boolean
-    picturePath: req.body.picturePath, // Check if URL
-    size: req.body.size,
-    color: req.body.color,
-    bio: req.body.bio,
-    hypoallergenic: req.body.hypoallergenic,
-    dietaryRestrictions: req.body.dietaryRestrictions, // Check that type is valid
-    breed: req.body.breed,
-  };
-  const formatedData = formatPetData(data);
+  try {
+    const data = {
+      id: crypto.randomUUID(),
+      type: req.body.type, // Check that type is valid
+      name: req.body.name,
+      adoptionStatus: req.body.adoptionStatus, // Convert to boolean
+      picturePath: req.body.picturePath, // Check if URL
+      size: req.body.size,
+      color: req.body.color,
+      bio: req.body.bio,
+      hypoallergenic: req.body.hypoallergenic,
+      dietaryRestrictions: req.body.dietaryRestrictions, // Check that type is valid
+      breed: req.body.breed,
+    };
+    const formatedData = formatPetData(data);
 
-  const pet = await createRecord(formatedData);
-  res.send("Successfully Added");
+    const pet = await createRecord(formatedData);
+    res.json({mesasge: "Successfully Added"});
+  } catch (error) {
+    res.status(400);
+    res.json({error: error.message});
+  }
 }
 
 export async function getPetByID(req, res) {
