@@ -22,5 +22,11 @@ export async function signin(req, res) {
     return;
   }
   const token = createJWT(user);
-  res.json({token});
+  res.json({
+    token,
+    role: user.role,
+    name: user.firstName,
+    email: user.email,
+    lastName: user.lastName,
+  });
 }

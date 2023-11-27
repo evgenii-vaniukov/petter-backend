@@ -1,4 +1,5 @@
 import {
+  convertSizes,
   convertToBoolean,
   convertToDieataryRestrictions,
   convertToPetType,
@@ -28,10 +29,8 @@ export function formatPetData(data) {
       data[key] = data[key].toLowerCase();
     } else if (key === "breed") {
       data[key] = data[key].toLowerCase();
-    } else if (key === "height") {
-      data[key] = +data[key];
-    } else if (key === "weight") {
-      data[key] = +data[key];
+    } else if (key === "size") {
+      data[key] = convertSizes(data[key]);
     }
   }
   return data;

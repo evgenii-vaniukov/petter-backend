@@ -34,8 +34,7 @@ export async function addPet(req, res) {
     name: req.body.name,
     adoptionStatus: req.body.adoptionStatus, // Convert to boolean
     picturePath: req.body.picturePath, // Check if URL
-    height: req.body.height,
-    weight: req.body.weight,
+    size: req.body.size,
     color: req.body.color,
     bio: req.body.bio,
     hypoallergenic: req.body.hypoallergenic,
