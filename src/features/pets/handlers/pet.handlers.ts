@@ -2,6 +2,7 @@ import crypto from "crypto";
 import {
   addRecordToUser,
   createRecord,
+  deleteRecordByID,
   editRecordByID,
   getData,
   getRecordByID,
@@ -25,7 +26,7 @@ export async function getPets(req, res) {
   const filteredData = await getData(searchParameters);
   res.json(filteredData);
 }
-/// !!!!!! put everything inside try catch
+// TODO: put everything inside try catch
 export async function addPet(req, res) {
   // TODO: Check that inputs are non empty
   try {
@@ -63,6 +64,17 @@ export async function editPet(req, res) {
   const updatedPetDetails = formatPetData(req.body);
   const updatedPet = await editRecordByID(id, updatedPetDetails);
   res.json(updatedPet);
+}
+
+export async function deletePet(req, res) {
+  try {
+    const id = req.params.id;
+    const deletedPet = await deleteRecordByID(id);
+    res.send("Successfully Deleted");
+  } catch (error) {
+    res.status(400);
+    res.json({error: error.message});
+  }
 }
 
 export async function adoptPet(req, res) {
