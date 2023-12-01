@@ -11,3 +11,20 @@ export async function getUserPets(userID) {
   });
   return userPets.adoptedPets;
 }
+
+// I need to join pet table  with saved pets table
+export async function getUserSavedPets(userID) {
+  const userSavedPets = await prisma.user.findUnique({
+    where: {
+      id: userID,
+    },
+    include: {
+      savedPets: {
+        include: {
+          pet: true,
+        },
+      },
+    },
+  });
+  return userSavedPets.savedPets.map((savedPet) => savedPet.pet);
+}

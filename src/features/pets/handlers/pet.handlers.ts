@@ -106,15 +106,25 @@ export async function returnPet(req, res) {
 }
 
 export async function savePet(req, res) {
-  const petID = req.params.id;
-  const userID = req.user.id;
-  const updatedUser = await saveRecordtoUser(userID, petID);
-  res.send("Sucessfully Saved");
+  try {
+    const petID = req.params.id;
+    const userID = req.user.id;
+    const updatedUser = await saveRecordtoUser(userID, petID);
+    res.send("Sucessfully Saved");
+  } catch (error) {
+    res.status(400);
+    res.json({error: error.message});
+  }
 }
 
 export async function unsavePet(req, res) {
-  const petID = req.params.id;
-  const userID = req.user.id;
-  const updatedUser = await removeRecordFromSaved(userID, petID);
-  res.send("Sucessfully Unsaved");
+  try {
+    const petID = req.params.id;
+    const userID = req.user.id;
+    const updatedUser = await removeRecordFromSaved(userID, petID);
+    res.send("Sucessfully Unsaved");
+  } catch (error) {
+    res.status(400);
+    res.json({error: error.message});
+  }
 }
