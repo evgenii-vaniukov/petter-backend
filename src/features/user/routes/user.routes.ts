@@ -7,11 +7,12 @@ import {
   updateUserPasswordHandler,
 } from "../handlers/user.handlers";
 
+import {emailIsUnique} from "../../auth/utils/email";
 import {passwordsMatch} from "../../auth/utils/passwords";
 
 export const user = Router();
 
 user.get("/pets", authProtect, getUserPetsHandler);
 user.get("/pets/saved", authProtect, getUserSavedPetsHandler);
-user.put("/details", authProtect, updateUserDetailsHandler);
+user.put("/details", [authProtect, emailIsUnique], updateUserDetailsHandler);
 user.put("/password", [authProtect, passwordsMatch], updateUserPasswordHandler);
