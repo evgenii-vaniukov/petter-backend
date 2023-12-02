@@ -28,3 +28,15 @@ export async function getUserSavedPets(userID) {
   });
   return userSavedPets.savedPets.map((savedPet) => savedPet.pet);
 }
+
+export async function updateUser(userID, data) {
+  const updatedUser = await prisma.user.update({
+    where: {
+      id: userID,
+    },
+    data: {
+      ...data,
+    },
+  });
+  return updatedUser;
+}
