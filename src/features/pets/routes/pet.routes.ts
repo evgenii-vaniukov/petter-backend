@@ -4,6 +4,7 @@ import {validateSchema} from "../../../utils/schemaValidation";
 import {
   addPet,
   adoptPet,
+  deletePet,
   editPet,
   getPetByID,
   getPets,
@@ -27,4 +28,6 @@ pet.post("/", [validateSchema(postPetSchema), adminProtect], addPet);
 pet.post("/:id/adopt", authProtect, adoptPet);
 pet.post("/:id/return", authProtect, returnPet);
 pet.post("/:id/save", authProtect, savePet);
+
+pet.delete("/:id", adminProtect, deletePet);
 pet.delete("/:id/save", authProtect, unsavePet);

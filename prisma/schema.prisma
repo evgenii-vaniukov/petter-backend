@@ -21,7 +21,7 @@ model User {
   password    String
   firstName   String
   lastName    String
-  phoneNumber String     @unique
+  phoneNumber String
   role        Role       @default(USER)
 
   @@index([id])
@@ -42,6 +42,12 @@ enum DietaryRestrictions {
   HYPOALERGENIC
 }
 
+enum Size {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
 model Pet {
   id                  String              @id @default(uuid())
   name                String
@@ -51,11 +57,10 @@ model Pet {
   type                PetType
   adoptionStatus      Boolean             @default(false)
   picturePath         String
-  height              Int
-  weight              Int
+  size                Size?
   color               String
   bio                 String
-  hypoallergenic      Boolean
+  hypoallergenic      Boolean             @default(false)
   dietaryRestrictions DietaryRestrictions
   breed               String
 
